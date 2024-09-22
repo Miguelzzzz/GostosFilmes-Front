@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Gostos Filmes</string>
+    <string name="iniciar">Cadastre-se</string>
+    <string name="bemvindos">Seja bem vindo ao nosso questionário</string>
+
+    <string name="questionariopessoal">Questionario Pessoal:</string>
+    <string name="nome">Nome:</string>
+    <string name="email">E-mail:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="telefone">Telefone:</string>
+    <string name="cinemafrequentado">Cinema que você frequenta:</string>
+    <string name="precoacessivel">Preço de um ingresso acessível:</string>
+
+    <string name="questionariogostos">Questionario cinematograficos:</string>
+    <string name="filmefavorito">Filme Favorito:</string>
+    <string name="generofavorito">Genêro Favorito:</string>
+    <string name="filmeodiado">Filme Odiado:</string>
+    <string name="generofilme">Genêro Odiado:</string>
+    <string name="atorfavorito">Ator/Atriz Favorita:</string>
+    <string name="filmesequencia">Filme que merece sequência:</string>
+    <string name="codigoentrevistado">Codigo do entrevistado:</string>
+    <string name="cmcpesquisa">Começar pesquisa:</string>
+
+    <string name="cadastrar">Cadastrar</string>
+    <string name="excluir">Excluir</string>
+    <string name="editar">Editar</string>
+    <string name="limpar">Limpar</string>
+    <string name="consultar">Consultar</string>
+    <string name="codigo">Codigo</string>
+</resources>
