@@ -24,24 +24,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TelaPesquisa extends AppCompatActivity {
+public class TelaPesquisa2 extends AppCompatActivity {
 
     EditText edtDin;
     ListView lstDin;
-    String nome;
-    private List<QuesPessoal> listaQuestionarioPessoal = new ArrayList<>();
-    private ArrayAdapter<QuesPessoal> adapterQuestionarioPessoal;
+    String filmeFavorito;
+    private List<QuesGostosFilmes> listaQuestionarioGostos = new ArrayList<>();
+    private ArrayAdapter<QuesGostosFilmes> adapterQuestionarioGostosFilmes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_pesquisa);
+        setContentView(R.layout.activity_tela_pesquisa2);
 
-        edtDin = findViewById(R.id.edtDinNome);
+        edtDin = findViewById(R.id.edtDinNome2);
         lstDin = findViewById(R.id.lstDin);
-        adapterQuestionarioPessoal = new ArrayAdapter<QuesPessoal>(TelaPesquisa.this, android.R.layout.simple_list_item_1, listaQuestionarioPessoal);
-        lstDin.setAdapter(adapterQuestionarioPessoal);
-        preencheLista(questionarioPessoal.caminho + "consultar_json");
+        adapterQuestionarioGostosFilmes = new ArrayAdapter<QuesGostosFilmes>(TelaPesquisa2.this, android.R.layout.simple_list_item_1, listaQuestionarioGostos);
+        lstDin.setAdapter(adapterQuestionarioGostosFilmes);
+        preencheLista(questionarioGostosFilmes.caminho + "consultar_json");
         edtDin.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -51,8 +51,8 @@ public class TelaPesquisa extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // Toast.makeText(TelaDinamica.this, "Valor Digitado " + s, Toast.LENGTH_SHORT).show();
-                nome = s.toString();
-                buscaNome(questionarioPessoal.caminho + "retorna_nome_din");
+                filmeFavorito = s.toString();
+                buscaNome(questionarioGostosFilmes.caminho + "retorna_nome_din");
             }
 
             @Override
@@ -63,9 +63,8 @@ public class TelaPesquisa extends AppCompatActivity {
     }
 
     public void preencheLista(String endereco) {
-        listaQuestionarioPessoal.clear();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, endereco, null,
-                new Response.Listener<JSONArray>() {
+        listaQuestionarioGostos.clear();
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, endereco, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         //Codigo se a execução deu certo
@@ -73,17 +72,19 @@ public class TelaPesquisa extends AppCompatActivity {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject obj = response.getJSONObject(i);
-                                QuesPessoal objPessoa = new QuesPessoal();
-                                objPessoa.setNomeCliente(obj.getString("nomeCliente"));
-                                objPessoa.setEmail(obj.getString("email"));
-                                objPessoa.setCidade(obj.getString("cidade"));
-                                objPessoa.setTelefone(obj.getString("telefone"));
-                                objPessoa.setCinemaFrequentado(obj.getString("cinemaFrequentado"));
-                                objPessoa.setPrecoIngresso(obj.getString("precoIngresso"));
-                                listaQuestionarioPessoal.add(objPessoa);
+                                QuesGostosFilmes objPessoa = new QuesGostosFilmes();
+                                objPessoa.setCodCliente(obj.getString("codCliente"));
+                                objPessoa.setFilmeFavorito(obj.getString("filmeFavorito"));
+                                objPessoa.setGeneroFavorito(obj.getString("generoFavorito"));
+                                objPessoa.setFilmeOdiado(obj.getString("filmeOdiado"));
+                                objPessoa.setGeneroOdiado(obj.getString("generoOdiado"));
+                                objPessoa.setAtorFavorito(obj.getString("atorFavorito"));
+                                objPessoa.setFilmeSequencia(obj.getString("filmeSequencia"));
+                                objPessoa.setcodGostos(obj.getString("codGostos"));
+                                listaQuestionarioGostos.add(objPessoa);
                             }
 
-                            adapterQuestionarioPessoal.notifyDataSetChanged();
+                            adapterQuestionarioGostosFilmes.notifyDataSetChanged();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -93,22 +94,21 @@ public class TelaPesquisa extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //se der algo errado
-                Toast.makeText(TelaPesquisa.this, "Não foi possível carregar" + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(TelaPesquisa2.this, "Não foi possível carregar" + error, Toast.LENGTH_SHORT).show();
             }
         }
 
         );
-        RequestQueue queue = Volley.newRequestQueue(TelaPesquisa.this);
+        RequestQueue queue = Volley.newRequestQueue(TelaPesquisa2.this);
         queue.getCache().clear();
         queue.add(jsonArrayRequest);
     }
 
 
     private void buscaNome(String endereco) {
-        listaQuestionarioPessoal.clear();
+        listaQuestionarioGostos.clear();
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest strRequest = new StringRequest(Request.Method.POST, endereco,
-                new Response.Listener<String>() {
+        StringRequest strRequest = new StringRequest(Request.Method.POST, endereco, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
@@ -117,17 +117,18 @@ public class TelaPesquisa extends AppCompatActivity {
                             for (int i = 0; i < objArray.length(); i++) {
                                 JSONObject obj = new JSONObject();
                                 obj = (JSONObject) objArray.get(i);
-                                QuesPessoal objPessoa = new QuesPessoal();
-                                objPessoa.setCodCliente(obj.getInt("codCliente"));
-                                objPessoa.setNomeCliente(obj.getString("nomeCliente"));
-                                objPessoa.setEmail(obj.getString("email"));
-                                objPessoa.setCidade(obj.getString("cidade"));
-                                objPessoa.setTelefone(obj.getString("telefone"));
-                                objPessoa.setCinemaFrequentado(obj.getString("cinemaFrequentado"));
-                                objPessoa.setPrecoIngresso(obj.getString("precoIngresso"));
-                                listaQuestionarioPessoal.add(objPessoa);
+                                QuesGostosFilmes objPessoa = new QuesGostosFilmes();
+                                objPessoa.setCodCliente(obj.getString("codCliente"));
+                                objPessoa.setFilmeFavorito(obj.getString("filmeFavorito"));
+                                objPessoa.setGeneroFavorito(obj.getString("generoFavorito"));
+                                objPessoa.setFilmeOdiado(obj.getString("filmeOdiado"));
+                                objPessoa.setGeneroOdiado(obj.getString("generoOdiado"));
+                                objPessoa.setAtorFavorito(obj.getString("atorFavorito"));
+                                objPessoa.setFilmeSequencia(obj.getString("filmeSequencia"));
+                                objPessoa.setcodGostos(obj.getString("codGostos"));
+                                listaQuestionarioGostos.add(objPessoa);
                             }
-                            adapterQuestionarioPessoal.notifyDataSetChanged();
+                            adapterQuestionarioGostosFilmes.notifyDataSetChanged();
                         } catch (JSONException e) {
 
                         }
@@ -136,13 +137,13 @@ public class TelaPesquisa extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(TelaPesquisa.this, error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TelaPesquisa2.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
         ) {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("nomeCliente", nome);
+                params.put("filmeFavorito", filmeFavorito);
                 return params;
             }
         };

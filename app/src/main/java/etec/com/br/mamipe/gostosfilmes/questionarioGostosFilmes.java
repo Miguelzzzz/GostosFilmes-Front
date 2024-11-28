@@ -43,7 +43,7 @@ public class questionarioGostosFilmes extends AppCompatActivity {
     QuesGostosFilmes pessoa = new QuesGostosFilmes();
     private List<QuesGostosFilmes> listaQuestionarioGostos = new ArrayList<>();
     private ArrayAdapter<QuesGostosFilmes> adapterQuestionarioGostosFilmes;
-    private static String ip = "192.168.1.31";
+    private static String ip = "192.168.1.28";
     private int codigo;
 
     public static String caminho = "http://"+ ip +"/API-GostosFilmes/controller/questionarioGostos.php?acao=";
@@ -100,15 +100,15 @@ public class questionarioGostosFilmes extends AppCompatActivity {
                 limparDados();
             }
         });
-/*
+
         btnCon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent itConsulta = new Intent(questionarioGostosFilmes.this, TelaPesquisa.class);
+                Intent itConsulta = new Intent(questionarioGostosFilmes.this, TelaPesquisa2.class);
                 startActivity(itConsulta);
             }
         });
-*/
+
         btnEdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

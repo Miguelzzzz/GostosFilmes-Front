@@ -39,7 +39,7 @@ public class questionarioPessoal extends AppCompatActivity {
     QuesPessoal pessoa = new QuesPessoal();
     private List<QuesPessoal> listaQuestionarioPessoal = new ArrayList<>();
     private ArrayAdapter<QuesPessoal> adapterQuestionarioPessoal;
-    private static String ip = "192.168.1.31";
+    private static String ip = "192.168.1.28";
     private int codigo;
     public static String caminho = "http://"+ ip +"/API-GostosFilmes/controller/questionarioPessoal.php?acao=";
 
@@ -95,13 +95,13 @@ public class questionarioPessoal extends AppCompatActivity {
             }
         });
 
-//        btnCon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent itConsulta = new Intent(questionarioPessoal.this, TelaPesquisa.class);
-//                startActivity(itConsulta);
-//            }
-//        });
+        btnCon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent itConsulta = new Intent(questionarioPessoal.this, TelaPesquisa.class);
+                startActivity(itConsulta);
+            }
+        });
 
         btnEdt.setOnClickListener(new View.OnClickListener() {
             @Override

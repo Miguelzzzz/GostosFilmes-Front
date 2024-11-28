@@ -71,5 +71,7 @@ public class QuesPessoal {
         return "Nome: " + getNomeCliente() + ", Email: " + getEmail() + ", Cidade: " + getCidade();
     }
 
+    public void setFilmeFavorito(String filmeFavorito) {
+    }
 }
 

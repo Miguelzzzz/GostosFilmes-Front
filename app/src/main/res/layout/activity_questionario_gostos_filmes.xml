@@ -9,13 +9,15 @@
 
     <EditText
         android:id="@+id/edtcodCliente"
-        android:layout_width="411dp"
+        android:layout_width="320dp"
         android:layout_height="37dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/codigoentrevistado"
         android:inputType="numberDecimal"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtfilmeSequencia" />
 
     <TextView
@@ -33,25 +35,27 @@
         android:id="@+id/btnLimpar"
         android:layout_width="122dp"
         android:layout_height="38dp"
-        android:layout_marginStart="76dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
         android:text="@string/limpar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCadastrar" />
 
     <Button
         android:id="@+id/btnConsultar"
-        android:layout_width="137dp"
-        android:layout_height="39dp"
+        android:layout_width="122dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         android:text="@string/consultar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
+        app:layout_constraintHorizontal_bias="0.755"
         app:layout_constraintStart_toEndOf="@+id/btnLimpar"
         app:layout_constraintTop_toBottomOf="@+id/btnEditar" />
 
     <Button
         android:id="@+id/btnEditar"
-        android:layout_width="109dp"
-        android:layout_height="37dp"
+        android:layout_width="123dp"
+        android:layout_height="38dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:text="@string/editar"
@@ -81,47 +85,46 @@
 
     <EditText
         android:id="@+id/edtfilmeSequencia"
-        android:layout_width="0dp"
-        android:layout_height="37dp"
+        android:layout_width="320dp"
+        android:layout_height="42dp"
         android:ems="10"
         android:hint="@string/filmesequencia"
-        android:textSize="16sp"
         android:inputType="text"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtatorFavorito" />
 
     <EditText
         android:id="@+id/edtfilmeOdiado"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="44dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/filmeodiado"
         android:inputType="text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtgeneroFavorito" />
 
     <EditText
         android:id="@+id/edtgeneroFavorito"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="42dp"
-        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/generofavorito"
         android:inputType="text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtfilmeFavorito" />
 
     <EditText
         android:id="@+id/edtfilmeFavorito"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="39dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -129,34 +132,33 @@
         android:inputType="text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/edtgeneroOdiado"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="39dp"
-        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="@string/generofilme"
         android:inputType="text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtfilmeOdiado" />
 
     <EditText
         android:id="@+id/edtatorFavorito"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="42dp"
         android:ems="10"
         android:hint="@string/atorfavorito"
         android:inputType="text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtgeneroOdiado" />
 
